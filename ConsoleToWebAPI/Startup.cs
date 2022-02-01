@@ -17,21 +17,7 @@ namespace ConsoleToWebAPI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("1\n");
-                await next();
-                await context.Response.WriteAsync("2\n");
-            });
-
-            app.UseMiddleware<CustomMiddleware1>();
-
-            app.Map("/mapped", RouteToMap);
-
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("5\n");
-            });
+            
 
 
             if (env.IsDevelopment())
